@@ -1,7 +1,7 @@
 ﻿USE [Subscription1DB]
 GO
 
-/****** Object:  Table [FavouriteMovies].[FavouriteMovies]    Script Date: 2/9/2025 3:40:32 PM ******/
+/****** Object:  Table [Movies].[Movies]    Script Date: 2/9/2025 3:40:32 PM ******/
 SET ANSI_NULLS ON
 GO
 
