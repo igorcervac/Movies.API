@@ -17,9 +17,10 @@ namespace Movies.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            var uiUrl = Environment.GetEnvironmentVariable("MoviesUI");
             builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
             {
-                p.AllowAnyOrigin();
+                p.WithOrigins(uiUrl);
                 p.AllowAnyMethod();
                 p.AllowAnyHeader();
             }));
