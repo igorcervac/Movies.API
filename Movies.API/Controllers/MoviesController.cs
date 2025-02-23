@@ -25,9 +25,9 @@ namespace Movies.API.Controllers
 
         // GET api/<MoviesController>/5
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            var movie = _context.Movies.Find(id);
+            var movie = await _context.Movies.FindAsync(id);
             if (movie == null)
             {
                 return NotFound();
@@ -38,10 +38,10 @@ namespace Movies.API.Controllers
 
         // POST api/<MoviesController>
         [HttpPost]
-        public ActionResult<Movie> Post([FromBody] Movie movie)
+        public async Task<ActionResult<Movie>> Post([FromBody] Movie movie)
         {
             _context.Movies.Add(movie);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetById), new { movie.Id}, movie);
         }
@@ -54,9 +54,9 @@ namespace Movies.API.Controllers
 
         // DELETE api/<MoviesController>/5
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var movie = _context.Movies.Find(id);
+            var movie = await _context.Movies.FindAsync(id);
 
             if (movie == null)
             {
@@ -64,7 +64,7 @@ namespace Movies.API.Controllers
             }
 
             _context.Movies.Remove(movie);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
